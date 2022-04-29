@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}hp{% endblock %}
+{% block content %}
+    <h3>Финансовые показатели «...» предприятия по признаку</h3>
+<form method="GET" action="{% url 'fp' %}?filter=priznak">
+        <select name="priznak">
+{#            {% for i in fp %}#}
+            <option>Дебет</option>
+                <option>Кредит</option>
+{#            {% endfor %}#}
+        </select>
+        <button>Поиск</button>
+</form>
+{% endblock %}

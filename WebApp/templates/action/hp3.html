@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}hp{% endblock %}
+{% block content %}
+    <h3>Вывести количество лет функционирования «...» предприятия </h3>
+    <form method="GET" action="{% url 'hp3_1' %}">
+        <select name="name">
+            {% for i in predpriyatie %}
+            <option>{{ i.full_name }}</option>
+            {% endfor %}
+        </select>
+        <button>Поиск</button>
+    </form>
+{% endblock %}

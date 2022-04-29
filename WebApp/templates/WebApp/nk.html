@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}NK{% endblock %}
+{% block content %}
+    <h3>Налоговые комитеты </h3>
+    {% if perms.WebApp.add_nk %}
+    <button class="btn" type="button" ><a href="{% url 'nk_form' %}">Добавить</a> </button>
+    {% endif %}
+    <div id = "NK">
+        <table class="table table-hover">
+
+        <th> Код</th>
+        <th> Наименование </th>
+        <th> Адрес </th>
+
+        {% for i in nk %}
+        <tr>
+            <td>
+                {% if perms.WebApp.change_nk %}
+                <a href="{% url 'nk_form_edit' i.id %}">
+                    {% endif %}
+                    {{ i.id }}</a></td>
+            <td> {{ i.name }}</td>
+            <td> {{ i.address }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}

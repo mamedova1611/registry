@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактирование{% endblock %}
+
+{% block content %}
+    <h2>Редактировать финансовые показатели</h2>
+    <form method="post" action="{% url 'fp_form_edit' fp_id %}">
+    {% csrf_token %}
+    {{ fp_form.as_p }}
+    <button type="submit">Сохранить</button>
+    </form>
+    {% if perms.WebApp.delete_fp %}
+    <form method="post" action="{% url 'fp_form_del' fp_id %}">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+    </form>
+    {% endif %}
+{% endblock %}

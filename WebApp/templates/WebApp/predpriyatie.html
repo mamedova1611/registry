@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}predpriyatie{% endblock %}
+{% block content %}
+    <h3>Предприятие</h3>
+    {% if perms.WebApp.add_predpriyatie %}
+    <button class="btn" type="button" ><a href="{% url 'predpriyatie_form' %}">Добавить</a> </button>
+    {% endif %}
+    <div id = "Predpriyatie">
+        <table class="table table-hover">
+
+        <th> БИН </th>
+        <th> Полное наименование </th>
+        <th> Сокрощенное наименование </th>
+        <th> Адрес </th>
+        <th> Телефон </th>
+        <th> ФИО руководителя </th>
+        <th> Форма организации </th>
+        <th> Вид хоз деят </th>
+        <th> ДАта регистрации </th>
+        <th> Налоговый комитет </th>
+        <th> Число работников </th>
+        <th> Учредители </th>
+
+        {% for i in predpriyatie %}
+        <tr>
+            <td>
+                {% if perms.WebApp.change_predpriyatie %}
+                <a href="{% url 'predpriyatie_form_edit' i.bin_id %}">
+                    {% endif %}
+                    {{ i.bin_id }}</a></td>
+            <td> {{ i.full_name }}</td>
+            <td> {{ i.sh_name }}</td>
+            <td> {{ i.address }}</td>
+            <td> {{ i.phone }}</td>
+            <td> {{ i.fio_ruk }}</td>
+            <td> {{ i.form_org }}</td>
+            <td> {{ i.vid_hoz_d }}</td>
+            <td> {{ i.date }}</td>
+            <td> {{ i.nalog_kom }}</td>
+            <td> {{ i.chislo_rab }}</td>
+            <td> {{ i.uchrediteli }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}

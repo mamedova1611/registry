@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}query{% endblock %}
+{% block content %}
+    <h3>Список предприятий в названии которого встречается слово «...» </h3>
+<form method="GET" action="{% url 'predpriyatie' %}?filter=word">
+        <input type="text" name="word">
+        <button>Поиск</button>
+</form>
+{% endblock %}

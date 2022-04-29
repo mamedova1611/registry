@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактирование{% endblock %}
+
+{% block content %}
+    <h2>Редактировать предприятие-банки</h2>
+    <form method="post" action="{% url 'pb_form_edit' pb_id %}">
+    {% csrf_token %}
+    {{ pb_form.as_p }}
+    <button type="submit">Сохранить</button>
+    </form>
+    {% if perms.WebApp.delete_pb %}
+    <form method="post" action="{% url 'pb_form_del' pb_id %}">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+    </form>
+    {% endif %}
+{% endblock %}

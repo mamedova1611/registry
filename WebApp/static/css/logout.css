@@ -1,0 +1,29 @@
+
+div.container{
+    
+        position: absolute;
+        left: 30%;
+        top: 17%;
+        width: 550px;
+        height: 350px; /* Ширина слоя */
+        margin: auto; /* Значение отступов */
+        padding-left: 100px; 
+        padding-top: 100px;/* Поля вокруг текста */
+        background-color: #4169E1;
+        
+    
+}
+h2{
+    position: relative;
+    left:42px; 
+}
+a{
+    color:white;
+}
+
+a.basic{
+    position: relative;
+    left:130px;
+
+}
+

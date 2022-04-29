@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/workers.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  {% if user.is_authenticated %}
+  <body>
+    <header>
+        <div id="Navigation">
+            <ul class="Navigation">
+                <li>Таблицы
+                    <ul>
+                        <li><a href="{% url 'vhd' %}"> Виды хоз.деятельности </a></li>
+                        <li><a href="{% url 'fo' %}">Форма организации</a> </li>
+                        <li><a href="{% url 'nk' %}"> Налоговые комитеты </a></li>
+                        <li><a href="{% url 'bank' %}"> Банки </a></li>
+                        <li><a href="{% url 'predpriyatie' %}"> Предприятие </a></li>
+                        <li><a href="{% url 'pb' %}">Предприятия-Банки</a> </li>
+                        <li><a href="{% url 'pvd' %}"> Предприятия-Виды хоз.деят </a></li>
+                        <li><a href="{% url 'fp' %}"> Финансовые показатели </a></li>
+                        <li><a href="{% url 'bs' %}"> Бухгалтерские счета </a></li>
+
+                    </ul>
+                </li>
+                <li>Запросы
+                    <ul>
+                        <li><a href="{% url 'q1' %}"> Суммарные объемы фин.показателей по каждому из кодов бух.счета </a></li>
+                        <li><a href="{% url 'q2' %}"> В каких банках обслуживаются предприятия, зарегистрированные «...» числа </a></li>
+                        <li><a href="{% url 'q3' %}"> Список предприятий в названии которого встречается слово «...» </a></li>
+                        <li><a href="{% url 'q4' %}"> Список предприятий, ставших на учет в «...» году </a></li>
+                        <li><a href="{% url 'q5' %}"> Списки предприятий с численностью работающих от «...» до «...» человек </a></li>
+                    </ul>
+                </li>
+                <li>Отчеты
+                    <ul>
+                         <li><a href="{% url 'r1' %}"> Финансовые показатели «...» предприятия за «...» год </a></li>
+                        <li><a href="{% url 'r2' %}"> Регистрационная карта «...» предприятия </a></li>
+                        <li><a href="{% url 'r3' %}"> Список предприятий, осуществляющих «...» вид хозяйственной деятельности </a></li>
+                    </ul>
+                </li>
+                <li>ХП
+                    <ul>
+                        <li><a href="{% url 'hp1' %}"> ИЗ ТАБЛИЦЫ ФИНАНСОВЫЕ ПОКАЗАТЕЛИ: ВСЕ ПРОВОДКИ С ПРИЗНАКОМ «...» </a></li>
+                        <li><a href="{% url 'hp2' %}"> ИЗ ТАБЛИЦЫ ФИНАНСОВЫЕ: ПРОВОДКИ «...» ПРЕДПРИЯТИЯ ЗА «...» КВАРТАЛ ТЕКУЩЕГО ГОДА </a></li>
+                        <li><a href="{% url 'hp3' %}"> Вывести количество лет функционирования «...» предприятия </a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'logout' %}"> Выход </a></li>
+            </ul>
+        </div>
+    </header>
+    <section>
+
+
+    {% block content %}
+        <h2>Добро пожаловать в систему "РЕЕСТР ПРЕДПРИЯТИЙ" </h2>
+    {% endblock %}
+    </section>
+  </body>
+{% endif %}
+</html>

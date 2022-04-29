@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}PVD{% endblock %}
+{% block content %}
+    <h3>Предприятие - Виды хоз деятельности </h3>
+    <div id = "PVD">
+        <table class="table table-hover">
+        <th> БИН</th>
+        <th> Вид хоз деятельности </th>
+        {% for i in pvd %}
+        <tr>
+            <td> {{ i.bin_pvd }}</td>
+            <td> {{ i.vid_hoz_d }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}

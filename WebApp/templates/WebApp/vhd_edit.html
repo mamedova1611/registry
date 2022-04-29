@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактирование{% endblock %}
+
+{% block content %}
+    <h2>Редактировать вид хозяйственной деятельности</h2>
+    <form method="post" action="{% url 'vhd_form_edit' vhd_id %}">
+    {% csrf_token %}
+    {{ vhd_form.as_p }}
+    <button type="submit">Сохранить</button>
+    </form>
+    {% if perms.WebApp.delete_vhd %}
+    <form method="post" action="{% url 'vhd_form_del' vhd_id %}">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+    </form>
+    {% endif %}
+{% endblock %}

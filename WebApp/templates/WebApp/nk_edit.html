@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактирование{% endblock %}
+
+{% block content %}
+    <h2>Редактировать налоговый комитет</h2>
+    <form method="post" action="{% url 'nk_form_edit' nk_id %}">
+    {% csrf_token %}
+    {{ nk_form.as_p }}
+    <button type="submit">Сохранить</button>
+    </form>
+    {% if perms.WebApp.delete_nk %}
+    <form method="post" action="{% url 'nk_form_del' nk_id %}">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+    </form>
+    {% endif %}
+{% endblock %}

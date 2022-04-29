@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактирование{% endblock %}
+
+{% block content %}
+    <h2>Редактировать банк</h2>
+    <form method="post" action="{% url 'predpriyatie_form_edit' predpriyatie_id %}">
+    {% csrf_token %}
+    {{ predpriyatie_form.as_p }}
+    <button type="submit">Сохранить</button>
+    </form>
+    {% if perms.WebApp.delete_predpriyatie %}
+    <form method="post" action="{% url 'predpriyatie_form_del' predpriyatie_id %}">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+    </form>
+     {% endif %}
+{% endblock %}

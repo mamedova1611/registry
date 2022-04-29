@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}query{% endblock %}
+{% block content %}
+    <h3>Список предприятий, ставших на учет в «...» году </h3>
+<form method="GET" action="{% url 'predpriyatie' %}?filter=year">
+        <input type="text" name="year">
+        <button>Поиск</button>
+</form>
+{% endblock %}

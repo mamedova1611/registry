@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}hp{% endblock %}
+{% block content %}
+    <h3>ИЗ ТАБЛИЦЫ ФИНАНСОВЫЕ ПОКАЗАТЕЛИ ВЫБРАТЬ СТРОКИ ПО УСЛОВИЮ: ПРОВОДКИ «...» ПРЕДПРИЯТИЯ ЗА «...» КВАРТАЛ ТЕКУЩЕГО ГОДА </h3>
+<form method="GET" action="{% url 'fp' %}?filter=kvartal">
+        <select name="fp-bin">
+            {% for i in fp %}
+            <option>{{ i.bin_fp.full_name }}</option>
+            {% endfor %}
+        </select>
+        <select name="kvartal">
+            <option>Первый</option>
+            <option>Второй</option>
+            <option>Третий</option>
+            <option>Четвертый</option>
+        </select>
+        <button>Поиск</button>
+</form>
+{% endblock %}

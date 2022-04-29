@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}FP{% endblock %}
+{% block content %}
+    <h3>Финансовые показатели </h3>
+    {% if perms.WebApp.add_fp %}
+    <button class="btn" type="button" ><a href="{% url 'fp_form' %}">Добавить</a> </button>
+    {% endif %}
+    <div id = "FP">
+        <table class="table table-hover">
+
+        <th> БИН</th>
+        <th> Квартал </th>
+        <th> Год </th>
+        <th> Код счета</th>
+        <th> Сумма </th>
+        <th> Признак </th>
+
+        {% for i in fp %}
+        <tr>
+            <td>
+                {% if perms.WebApp.change_fp %}
+                <a href="{% url 'fp_form_edit' i.bin_fp.bin_id %}">
+                    {% endif %}
+                {{ i.bin_fp }}</a></td>
+            <td> {{ i.kvartal }}</td>
+            <td> {{ i.date }}</td>
+            <td> {{ i.bs }}</td>
+            <td> {{ i.summa }}</td>
+            <td> {{ i.priznak }}</td>
+
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}

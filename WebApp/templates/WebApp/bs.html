@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}BS{% endblock %}
+{% block content %}
+    <h3>Бухгалтерские счета </h3>
+    {% if perms.WebApp.add_bs %}
+        <button class="btn" type="button" ><a href="{% url 'bs_form' %}">Добавить</a> </button>
+    {% endif %}
+    <div id = "BS">
+        <table class="table table-hover">
+
+        <th> Код</th>
+        <th> Наименование </th>
+
+        {% for i in bs %}
+        <tr>
+            <td>
+                {% if perms.WebApp.change_bs %}
+                <a href="{% url 'bs_form_edit' i.kod %}">
+                    {% endif %}
+                {{ i.kod }}</a></td>
+            <td> {{ i.name }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}

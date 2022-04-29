@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}report{% endblock %}
+{% block content %}
+    <h3>Регистрационная карта «...» предприятия</h3>
+    <form method="GET" action="{% url 'predpriyatie' %}?search=bin">
+        <input type="text" name="bin">
+        <button>Поиск</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}PB{% endblock %}
+{% block content %}
+    <h3>Предприятия_банки </h3>
+    {% if perms.WebApp.add_pb %}
+            <button class="btn" type="button" ><a href="{% url 'pb_form' %}">Добавить</a> </button>
+        {% endif %}
+    <div id = "PB">
+        <table class="table table-hover">
+
+        <th> БИН предприятия</th>
+        <th> Код банка</th>
+        <th> Лицевой чет</th>
+
+        {% for i in pb %}
+        <tr>
+            <td>
+                {% if perms.WebApp.change_pb %}
+                    <a href="{% url 'pb_form_edit' i.bin_pb.bin_id %}">
+                {% endif %}
+                {{ i.bin_pb.bin_id }}</a></td>
+            <td> {{ i.bank }}</td>
+            <td> {{ i.schet }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-hover">
+
+        <th> Код</th>
+        <th> Наименование </th>
+        <th> Адрес </th>
+
+        {% for i in bank %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td> {{ i.name }}</td>
+            <td> {{ i.address }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

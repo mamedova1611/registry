@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}report{% endblock %}
+{% block content %}
+    <h3>Финансовые показатели «...» предприятия за «...» год</h3>
+<form method="GET" action="{% url 'fp' %}?filter=fp">
+        <select name="fp-bin">
+            {% for i in fp %}
+            <option>{{ i.bin_fp.full_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="fp-year">
+        <button>Поиск</button>
+</form>
+{% endblock %}

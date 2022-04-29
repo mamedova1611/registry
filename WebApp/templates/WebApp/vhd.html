@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}VHD{% endblock %}
+{% block content %}
+    <h3>Виды хоз деятельности </h3>
+    {% if perms.WebApp.add_vhd %}
+    <button class="btn" type="button" ><a href="{% url 'vhd_form' %}">Добавить</a> </button>
+    {% endif %}
+    <div id = "VHD">
+        <table class="table table-hover">
+
+        <th> Код</th>
+        <th> Наименование </th>
+
+        {% for v in vhd %}
+        <tr>
+            <td>
+                {% if perms.WebApp.change_vhd %}
+                <a href="{% url 'vhd_form_edit' v.id %}">
+                    {% endif %}
+                    {{ v.id }}</a></td>
+            <td> {{ v.name }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}

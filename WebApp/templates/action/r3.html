@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}report{% endblock %}
+{% block content %}
+    <h3>Список предприятий, осуществляющих «...» вид хозяйственной деятельност </h3>
+<form method="GET" action="{% url 'pvd' %}?filter=vhd">
+        <select name="vhd">
+            {% for v in vhd %}
+            <option>{{ v.name }}</option>
+            {% endfor %}
+        </select>
+        <button>Поиск</button>
+</form>
+{% endblock %}
